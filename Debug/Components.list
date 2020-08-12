@@ -1,0 +1,369 @@
+
+Components.elf:     file format elf32-littlearm
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .isr_vector   000001a8  08000000  08000000  00010000  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  1 .text         000001dc  080001a8  080001a8  000101a8  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .rodata       00000000  08000384  0800038c  0001038c  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  3 .ARM.extab    00000000  08000384  08000384  0001038c  2**0
+                  CONTENTS
+  4 .ARM          00000000  08000384  08000384  0001038c  2**0
+                  CONTENTS
+  5 .preinit_array 00000000  08000384  0800038c  0001038c  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  6 .init_array   00000004  08000384  08000384  00010384  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  7 .fini_array   00000004  08000388  08000388  00010388  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  8 .data         00000000  20000000  20000000  0001038c  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  9 .bss          0000001c  20000000  0800038c  00020000  2**2
+                  ALLOC
+ 10 ._user_heap_stack 00000604  2000001c  0800038c  0002001c  2**0
+                  ALLOC
+ 11 .ARM.attributes 00000030  00000000  00000000  0001038c  2**0
+                  CONTENTS, READONLY
+ 12 .debug_info   000014bb  00000000  00000000  000103bc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_abbrev 000001c6  00000000  00000000  00011877  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 14 .debug_aranges 00000050  00000000  00000000  00011a40  2**3
+                  CONTENTS, READONLY, DEBUGGING
+ 15 .debug_ranges 00000038  00000000  00000000  00011a90  2**3
+                  CONTENTS, READONLY, DEBUGGING
+ 16 .debug_macro  00000f6d  00000000  00000000  00011ac8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 17 .debug_line   00000443  00000000  00000000  00012a35  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 18 .debug_str    000048f7  00000000  00000000  00012e78  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 19 .comment      0000007b  00000000  00000000  0001776f  2**0
+                  CONTENTS, READONLY
+ 20 .debug_frame  00000080  00000000  00000000  000177ec  2**2
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+080001a8 <__do_global_dtors_aux>:
+ 80001a8:	b510      	push	{r4, lr}
+ 80001aa:	4c05      	ldr	r4, [pc, #20]	; (80001c0 <__do_global_dtors_aux+0x18>)
+ 80001ac:	7823      	ldrb	r3, [r4, #0]
+ 80001ae:	b933      	cbnz	r3, 80001be <__do_global_dtors_aux+0x16>
+ 80001b0:	4b04      	ldr	r3, [pc, #16]	; (80001c4 <__do_global_dtors_aux+0x1c>)
+ 80001b2:	b113      	cbz	r3, 80001ba <__do_global_dtors_aux+0x12>
+ 80001b4:	4804      	ldr	r0, [pc, #16]	; (80001c8 <__do_global_dtors_aux+0x20>)
+ 80001b6:	f3af 8000 	nop.w
+ 80001ba:	2301      	movs	r3, #1
+ 80001bc:	7023      	strb	r3, [r4, #0]
+ 80001be:	bd10      	pop	{r4, pc}
+ 80001c0:	20000000 	.word	0x20000000
+ 80001c4:	00000000 	.word	0x00000000
+ 80001c8:	0800036c 	.word	0x0800036c
+
+080001cc <frame_dummy>:
+ 80001cc:	b508      	push	{r3, lr}
+ 80001ce:	4b03      	ldr	r3, [pc, #12]	; (80001dc <frame_dummy+0x10>)
+ 80001d0:	b11b      	cbz	r3, 80001da <frame_dummy+0xe>
+ 80001d2:	4903      	ldr	r1, [pc, #12]	; (80001e0 <frame_dummy+0x14>)
+ 80001d4:	4803      	ldr	r0, [pc, #12]	; (80001e4 <frame_dummy+0x18>)
+ 80001d6:	f3af 8000 	nop.w
+ 80001da:	bd08      	pop	{r3, pc}
+ 80001dc:	00000000 	.word	0x00000000
+ 80001e0:	20000004 	.word	0x20000004
+ 80001e4:	0800036c 	.word	0x0800036c
+
+080001e8 <GPIODriver_Init>:
+} while(0);
+
+void GPIODriver_Init(volatile struct GPIO_tag *port, GPIO_PIN pin, GPIO_CONFIG config, GPIO_SPEED speed);
+
+void GPIODriver_Init(volatile struct GPIO_tag *port, GPIO_PIN pin, GPIO_CONFIG config, GPIO_SPEED speed)
+{
+ 80001e8:	b480      	push	{r7}
+ 80001ea:	b087      	sub	sp, #28
+ 80001ec:	af00      	add	r7, sp, #0
+ 80001ee:	6078      	str	r0, [r7, #4]
+ 80001f0:	4608      	mov	r0, r1
+ 80001f2:	4611      	mov	r1, r2
+ 80001f4:	461a      	mov	r2, r3
+ 80001f6:	4603      	mov	r3, r0
+ 80001f8:	70fb      	strb	r3, [r7, #3]
+ 80001fa:	460b      	mov	r3, r1
+ 80001fc:	70bb      	strb	r3, [r7, #2]
+ 80001fe:	4613      	mov	r3, r2
+ 8000200:	707b      	strb	r3, [r7, #1]
+	switch (config) {
+ 8000202:	78bb      	ldrb	r3, [r7, #2]
+ 8000204:	2b00      	cmp	r3, #0
+ 8000206:	d000      	beq.n	800020a <GPIODriver_Init+0x22>
+			SET_GPIO_SPEED(port, pin, speed);
+			SET_GPIO_OUTPUT_TYPE(port, pin, GPIO_OUTPUT_TYPE_PUSH_PULL);
+			break;
+		default:
+			// Not reachable
+			break;
+ 8000208:	e043      	b.n	8000292 <GPIODriver_Init+0xaa>
+			SET_GPIO_MODE(port, pin, GPIO_MODE_REGISTER_OUTPUT);
+ 800020a:	687b      	ldr	r3, [r7, #4]
+ 800020c:	681b      	ldr	r3, [r3, #0]
+ 800020e:	617b      	str	r3, [r7, #20]
+ 8000210:	78fb      	ldrb	r3, [r7, #3]
+ 8000212:	005b      	lsls	r3, r3, #1
+ 8000214:	2203      	movs	r2, #3
+ 8000216:	fa02 f303 	lsl.w	r3, r2, r3
+ 800021a:	43db      	mvns	r3, r3
+ 800021c:	461a      	mov	r2, r3
+ 800021e:	697b      	ldr	r3, [r7, #20]
+ 8000220:	4013      	ands	r3, r2
+ 8000222:	617b      	str	r3, [r7, #20]
+ 8000224:	78fb      	ldrb	r3, [r7, #3]
+ 8000226:	005b      	lsls	r3, r3, #1
+ 8000228:	2201      	movs	r2, #1
+ 800022a:	fa02 f303 	lsl.w	r3, r2, r3
+ 800022e:	461a      	mov	r2, r3
+ 8000230:	697b      	ldr	r3, [r7, #20]
+ 8000232:	4313      	orrs	r3, r2
+ 8000234:	617b      	str	r3, [r7, #20]
+ 8000236:	697a      	ldr	r2, [r7, #20]
+ 8000238:	687b      	ldr	r3, [r7, #4]
+ 800023a:	601a      	str	r2, [r3, #0]
+			SET_GPIO_SPEED(port, pin, speed);
+ 800023c:	687b      	ldr	r3, [r7, #4]
+ 800023e:	689b      	ldr	r3, [r3, #8]
+ 8000240:	613b      	str	r3, [r7, #16]
+ 8000242:	78fb      	ldrb	r3, [r7, #3]
+ 8000244:	005b      	lsls	r3, r3, #1
+ 8000246:	2203      	movs	r2, #3
+ 8000248:	fa02 f303 	lsl.w	r3, r2, r3
+ 800024c:	43db      	mvns	r3, r3
+ 800024e:	461a      	mov	r2, r3
+ 8000250:	693b      	ldr	r3, [r7, #16]
+ 8000252:	4013      	ands	r3, r2
+ 8000254:	613b      	str	r3, [r7, #16]
+ 8000256:	787a      	ldrb	r2, [r7, #1]
+ 8000258:	78fb      	ldrb	r3, [r7, #3]
+ 800025a:	005b      	lsls	r3, r3, #1
+ 800025c:	fa02 f303 	lsl.w	r3, r2, r3
+ 8000260:	461a      	mov	r2, r3
+ 8000262:	693b      	ldr	r3, [r7, #16]
+ 8000264:	4313      	orrs	r3, r2
+ 8000266:	613b      	str	r3, [r7, #16]
+ 8000268:	693a      	ldr	r2, [r7, #16]
+ 800026a:	687b      	ldr	r3, [r7, #4]
+ 800026c:	609a      	str	r2, [r3, #8]
+			SET_GPIO_OUTPUT_TYPE(port, pin, GPIO_OUTPUT_TYPE_PUSH_PULL);
+ 800026e:	687b      	ldr	r3, [r7, #4]
+ 8000270:	685b      	ldr	r3, [r3, #4]
+ 8000272:	60fb      	str	r3, [r7, #12]
+ 8000274:	78fb      	ldrb	r3, [r7, #3]
+ 8000276:	2201      	movs	r2, #1
+ 8000278:	fa02 f303 	lsl.w	r3, r2, r3
+ 800027c:	43db      	mvns	r3, r3
+ 800027e:	461a      	mov	r2, r3
+ 8000280:	68fb      	ldr	r3, [r7, #12]
+ 8000282:	4013      	ands	r3, r2
+ 8000284:	60fb      	str	r3, [r7, #12]
+ 8000286:	68fb      	ldr	r3, [r7, #12]
+ 8000288:	60fb      	str	r3, [r7, #12]
+ 800028a:	68fa      	ldr	r2, [r7, #12]
+ 800028c:	687b      	ldr	r3, [r7, #4]
+ 800028e:	605a      	str	r2, [r3, #4]
+			break;
+ 8000290:	bf00      	nop
+	}
+}
+ 8000292:	bf00      	nop
+ 8000294:	371c      	adds	r7, #28
+ 8000296:	46bd      	mov	sp, r7
+ 8000298:	f85d 7b04 	ldr.w	r7, [sp], #4
+ 800029c:	4770      	bx	lr
+	...
+
+080002a0 <main>:
+
+int main(void)
+{
+ 80002a0:	b580      	push	{r7, lr}
+ 80002a2:	af00      	add	r7, sp, #0
+	RCC->RCC_AHB1ENR.B.GPIOCEN = 1;
+ 80002a4:	4a08      	ldr	r2, [pc, #32]	; (80002c8 <main+0x28>)
+ 80002a6:	6b13      	ldr	r3, [r2, #48]	; 0x30
+ 80002a8:	f043 0304 	orr.w	r3, r3, #4
+ 80002ac:	6313      	str	r3, [r2, #48]	; 0x30
+
+	while(1)
+	{
+		GPIODriver_Init(GPIOC, GPIO_PIN_5, GPIO_CONFIG_OUTPUT_PP, GPIO_SPEED_HIGH_SPEED);
+ 80002ae:	2302      	movs	r3, #2
+ 80002b0:	2200      	movs	r2, #0
+ 80002b2:	2105      	movs	r1, #5
+ 80002b4:	4805      	ldr	r0, [pc, #20]	; (80002cc <main+0x2c>)
+ 80002b6:	f7ff ff97 	bl	80001e8 <GPIODriver_Init>
+		GPIODriver_Init(GPIOC, GPIO_PIN_5, GPIO_CONFIG_OUTPUT_PP, GPIO_SPEED_LOW_SPEED);
+ 80002ba:	2300      	movs	r3, #0
+ 80002bc:	2200      	movs	r2, #0
+ 80002be:	2105      	movs	r1, #5
+ 80002c0:	4802      	ldr	r0, [pc, #8]	; (80002cc <main+0x2c>)
+ 80002c2:	f7ff ff91 	bl	80001e8 <GPIODriver_Init>
+		GPIODriver_Init(GPIOC, GPIO_PIN_5, GPIO_CONFIG_OUTPUT_PP, GPIO_SPEED_HIGH_SPEED);
+ 80002c6:	e7f2      	b.n	80002ae <main+0xe>
+ 80002c8:	40023800 	.word	0x40023800
+ 80002cc:	40020800 	.word	0x40020800
+
+080002d0 <Reset_Handler>:
+
+  .section .text.Reset_Handler
+  .weak Reset_Handler
+  .type Reset_Handler, %function
+Reset_Handler:
+  ldr   r0, =_estack
+ 80002d0:	480d      	ldr	r0, [pc, #52]	; (8000308 <LoopForever+0x2>)
+  mov   sp, r0          /* set stack pointer */
+ 80002d2:	4685      	mov	sp, r0
+
+/* Copy the data segment initializers from flash to SRAM */
+  ldr r0, =_sdata
+ 80002d4:	480d      	ldr	r0, [pc, #52]	; (800030c <LoopForever+0x6>)
+  ldr r1, =_edata
+ 80002d6:	490e      	ldr	r1, [pc, #56]	; (8000310 <LoopForever+0xa>)
+  ldr r2, =_sidata
+ 80002d8:	4a0e      	ldr	r2, [pc, #56]	; (8000314 <LoopForever+0xe>)
+  movs r3, #0
+ 80002da:	2300      	movs	r3, #0
+  b LoopCopyDataInit
+ 80002dc:	e002      	b.n	80002e4 <LoopCopyDataInit>
+
+080002de <CopyDataInit>:
+
+CopyDataInit:
+  ldr r4, [r2, r3]
+ 80002de:	58d4      	ldr	r4, [r2, r3]
+  str r4, [r0, r3]
+ 80002e0:	50c4      	str	r4, [r0, r3]
+  adds r3, r3, #4
+ 80002e2:	3304      	adds	r3, #4
+
+080002e4 <LoopCopyDataInit>:
+
+LoopCopyDataInit:
+  adds r4, r0, r3
+ 80002e4:	18c4      	adds	r4, r0, r3
+  cmp r4, r1
+ 80002e6:	428c      	cmp	r4, r1
+  bcc CopyDataInit
+ 80002e8:	d3f9      	bcc.n	80002de <CopyDataInit>
+
+/* Zero fill the bss segment. */
+  ldr r2, =_sbss
+ 80002ea:	4a0b      	ldr	r2, [pc, #44]	; (8000318 <LoopForever+0x12>)
+  ldr r4, =_ebss
+ 80002ec:	4c0b      	ldr	r4, [pc, #44]	; (800031c <LoopForever+0x16>)
+  movs r3, #0
+ 80002ee:	2300      	movs	r3, #0
+  b LoopFillZerobss
+ 80002f0:	e001      	b.n	80002f6 <LoopFillZerobss>
+
+080002f2 <FillZerobss>:
+
+FillZerobss:
+  str  r3, [r2]
+ 80002f2:	6013      	str	r3, [r2, #0]
+  adds r2, r2, #4
+ 80002f4:	3204      	adds	r2, #4
+
+080002f6 <LoopFillZerobss>:
+
+LoopFillZerobss:
+  cmp r2, r4
+ 80002f6:	42a2      	cmp	r2, r4
+  bcc FillZerobss
+ 80002f8:	d3fb      	bcc.n	80002f2 <FillZerobss>
+
+/* Call the clock system intitialization function.*/
+  bl  SystemInit
+ 80002fa:	f3af 8000 	nop.w
+/* Call static constructors */
+  bl __libc_init_array
+ 80002fe:	f000 f811 	bl	8000324 <__libc_init_array>
+/* Call the application's entry point.*/
+  bl main
+ 8000302:	f7ff ffcd 	bl	80002a0 <main>
+
+08000306 <LoopForever>:
+
+LoopForever:
+    b LoopForever
+ 8000306:	e7fe      	b.n	8000306 <LoopForever>
+  ldr   r0, =_estack
+ 8000308:	20020000 	.word	0x20020000
+  ldr r0, =_sdata
+ 800030c:	20000000 	.word	0x20000000
+  ldr r1, =_edata
+ 8000310:	20000000 	.word	0x20000000
+  ldr r2, =_sidata
+ 8000314:	0800038c 	.word	0x0800038c
+  ldr r2, =_sbss
+ 8000318:	20000000 	.word	0x20000000
+  ldr r4, =_ebss
+ 800031c:	2000001c 	.word	0x2000001c
+
+08000320 <ADC_IRQHandler>:
+ * @retval : None
+*/
+  .section .text.Default_Handler,"ax",%progbits
+Default_Handler:
+Infinite_Loop:
+  b Infinite_Loop
+ 8000320:	e7fe      	b.n	8000320 <ADC_IRQHandler>
+	...
+
+08000324 <__libc_init_array>:
+ 8000324:	b570      	push	{r4, r5, r6, lr}
+ 8000326:	4e0d      	ldr	r6, [pc, #52]	; (800035c <__libc_init_array+0x38>)
+ 8000328:	4c0d      	ldr	r4, [pc, #52]	; (8000360 <__libc_init_array+0x3c>)
+ 800032a:	1ba4      	subs	r4, r4, r6
+ 800032c:	10a4      	asrs	r4, r4, #2
+ 800032e:	2500      	movs	r5, #0
+ 8000330:	42a5      	cmp	r5, r4
+ 8000332:	d109      	bne.n	8000348 <__libc_init_array+0x24>
+ 8000334:	4e0b      	ldr	r6, [pc, #44]	; (8000364 <__libc_init_array+0x40>)
+ 8000336:	4c0c      	ldr	r4, [pc, #48]	; (8000368 <__libc_init_array+0x44>)
+ 8000338:	f000 f818 	bl	800036c <_init>
+ 800033c:	1ba4      	subs	r4, r4, r6
+ 800033e:	10a4      	asrs	r4, r4, #2
+ 8000340:	2500      	movs	r5, #0
+ 8000342:	42a5      	cmp	r5, r4
+ 8000344:	d105      	bne.n	8000352 <__libc_init_array+0x2e>
+ 8000346:	bd70      	pop	{r4, r5, r6, pc}
+ 8000348:	f856 3025 	ldr.w	r3, [r6, r5, lsl #2]
+ 800034c:	4798      	blx	r3
+ 800034e:	3501      	adds	r5, #1
+ 8000350:	e7ee      	b.n	8000330 <__libc_init_array+0xc>
+ 8000352:	f856 3025 	ldr.w	r3, [r6, r5, lsl #2]
+ 8000356:	4798      	blx	r3
+ 8000358:	3501      	adds	r5, #1
+ 800035a:	e7f2      	b.n	8000342 <__libc_init_array+0x1e>
+ 800035c:	08000384 	.word	0x08000384
+ 8000360:	08000384 	.word	0x08000384
+ 8000364:	08000384 	.word	0x08000384
+ 8000368:	08000388 	.word	0x08000388
+
+0800036c <_init>:
+ 800036c:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 800036e:	bf00      	nop
+ 8000370:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ 8000372:	bc08      	pop	{r3}
+ 8000374:	469e      	mov	lr, r3
+ 8000376:	4770      	bx	lr
+
+08000378 <_fini>:
+ 8000378:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 800037a:	bf00      	nop
+ 800037c:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ 800037e:	bc08      	pop	{r3}
+ 8000380:	469e      	mov	lr, r3
+ 8000382:	4770      	bx	lr
